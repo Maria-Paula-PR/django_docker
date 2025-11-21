@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Contenido del curso{% endblock %}
+{% block content %}
+<div class="max-w-5xl mx-auto p-6">
+  {% if messages %}
+  <div class="mb-6">
+    {% for message in messages %}
+    <div class="p-4 rounded border
+      {% if message.tags == 'success' %} bg-green-100 border-green-300 text-green-800
+      {% elif message.tags == 'error' %} bg-red-100 border-red-300 text-red-800
+      {% else %} bg-blue-100 border-blue-300 text-blue-800 {% endif %}">
+      {{ message }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <h1 class="text-3xl font-bold mb-2">{{ course.title }}</h1>
+  <p class="text-gray-600 mb-6">{{ course.short_description|default:course.description }}</p>
+
+  <h2 class="text-xl font-semibold mb-3">Lecciones</h2>
+  {% if lessons %}
+  <ul class="space-y-2">
+    {% for lesson in lessons %}
+    <li class="p-3 border rounded bg-white flex items-center justify-between">
+      <div>
+        <div class="font-medium">{{ lesson.order }}. {{ lesson.title }}</div>
+        {% if lesson.duration_minutes %}<div class="text-sm text-gray-500">{{ lesson.duration_minutes }} min</div>{% endif %}
+      </div>
+      <!-- Si luego hay una vista de lección, aquí iría un enlace -->
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No hay lecciones publicadas aún.</p>
+  {% endif %}
+
+  <div class="mt-6">
+    <a href="{% url 'panel_cursos' %}" class="text-blue-600 hover:underline">Volver al panel de cursos</a>
+  </div>
+</div>
+{% endblock %}
