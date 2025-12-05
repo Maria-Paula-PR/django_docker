@@ -3,11 +3,11 @@ services:
     build: .
     env_file:
       - .env
-    command: python manage.py runserver 0.0.0:8500
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
     ports:
-      - "8500:8500"
+      - "8000:8000"
     depends_on:
       - db
   db:
@@ -18,7 +18,8 @@ services:
       - POSTGRES_DB=mydatabase
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=password
-      - POSGRES_PORT=5432
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
 
 volumes:
   postgres_data:
