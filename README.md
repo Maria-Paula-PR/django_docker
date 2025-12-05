@@ -52,7 +52,7 @@ django_docker/
 
 ▶️ Cómo ejecutar el proyecto
 1. Clonar el repositorio
-git clone https://github.com/tu_usuario/django_docker.git
+git clone https://github.com/Maria-Paula-PR/django_docker.git
 cd django_docker
 
 2. Crear archivo .env con variables como:
