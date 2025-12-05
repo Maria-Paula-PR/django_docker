@@ -37,9 +37,7 @@ Docker y Docker Compose
 
 OAuth2 (Google)
 
-SMTP (para envío de correos)
-
-SQLite o PostgreSQL (según configuración)
+PostgreSQL 
 
 🧱 Estructura del proyecto
 django_docker/
